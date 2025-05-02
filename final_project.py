@@ -5,10 +5,7 @@ Created on Tue Apr 15 11:22:12 2025
 @author: sohca, ChatGPT
 """
 
-# C E 367R converting my CSVs to shapefiles with geopandas
-
-
-# NEED TO REDUCE THE SIZE OF THE NETWORK
+# MAKE SURE TO DOWNLOAD ALL INFORMATION FROM THE GEOGRAPHIC INFORMATION FOLDER AND REFERENCE WHERE "Users/sohca" IS REFERENCED
 
 #%%
 
@@ -363,18 +360,18 @@ fig, ax = plt.subplots(figsize=(10, 8))
 links_web.plot(ax=ax, color='gray', linewidth=1, label='Street Centerlines')
 # full_street_centerline_web.plot(ax=ax, color='gray', linewidth=1, label='Street Centerlines')
 nodes_web.plot(ax=ax, color='blue', markersize=15, label='Nodes')
-# stations_web.plot(ax=ax, color='red', markersize=15, label='Bikeshare Kiosks')
+stations_web.plot(ax=ax, color='red', markersize=15, label='Bikeshare Kiosks')
 
 # Add text labels and adjust them to avoid overlap
 
-# if 'kiosk_name' in stations_with_intersections.columns:
-#     for x, y, label in zip(stations_web.geometry.x, stations_web.geometry.y, stations_with_intersections['kiosk_name']):
-#         ax.text(
-#                     x + 0.0001, y + 0.0001, str(label),
-#                     fontsize=8,
-#                     color='white',  # Text color
-#                     bbox=dict(facecolor='black', alpha=0.6, edgecolor='none', boxstyle='round,pad=0.2')  # Background box
-#                 )
+if 'kiosk_name' in stations_with_intersections.columns:
+    for x, y, label in zip(stations_web.geometry.x, stations_web.geometry.y, stations_with_intersections['kiosk_name']):
+        ax.text(
+                    x + 0.0001, y + 0.0001, str(label),
+                    fontsize=8,
+                    color='white',  # Text color
+                    bbox=dict(facecolor='black', alpha=0.6, edgecolor='none', boxstyle='round,pad=0.2')  # Background box
+                )
 
 # Add basemap
 # ctx.add_basemap(ax, source=ctx.providers.OpenStreetMap.Mapnik)
